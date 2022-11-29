@@ -1,17 +1,18 @@
 package com.johnson.spring.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+import javax.persistence.*;
+
+@Data
+@Entity
+@Table(name="holidays")
 public class Holiday extends BaseEntity{
+    @Id
     private String day;
     private String reason;
+
+    @Enumerated(EnumType.STRING)
     private Type type;
 
     public enum Type {

@@ -1,19 +1,22 @@
 package com.johnson.spring.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Email;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-@Getter
-@Setter
-@ToString
+@Entity
+@Table(name="contact_msg")
+@Data
 public class Contact extends BaseEntity {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int contactId;
 
     @NotBlank(message="Name must not be blank")
