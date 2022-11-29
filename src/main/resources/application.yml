@@ -3,8 +3,3 @@ spring:
     url: jdbc:mysql://spring.ckxxxsfzfyty.us-east-1.rds.amazonaws.com
     username: admin
     password: admin123
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: update
-    show-sql: true
