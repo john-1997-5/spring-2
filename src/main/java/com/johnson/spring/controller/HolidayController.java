@@ -31,7 +31,9 @@ public class HolidayController {
         model.addAttribute("festival", festival);
         model.addAttribute("federal", federal);
 
-        List<Holiday> holidays = holidayService.getHolidays(display.toUpperCase());
+        List<Holiday> holidays = display.equals("all")
+                ? holidayService.getAllHolidays()
+                : holidayService.getHolidaysByType(Holiday.Type.valueOf(display.toUpperCase()));
 
         for (var type : Holiday.Type.values()) {
             model.addAttribute(type.toString(),

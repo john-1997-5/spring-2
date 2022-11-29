@@ -40,26 +40,23 @@ public class ContactService {
     }
 
     public List<Contact> findMessagesWithOpenStatus() {
-        List<Contact> contactMessages = new ArrayList<>();
+        /*List<Contact> contactMessages = new ArrayList<>();
         Iterable<Contact> all = contactRepository.findAll();
         all.forEach(contactMessages::add);
         return contactMessages.stream()
                 .filter(contact -> contact.getStatus().equals(AppConstants.OPEN))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
+        return contactRepository.findByStatus(AppConstants.OPEN);
     }
 
     public boolean updateMsgStatus(int contactId, String updatedBy) {
-        Optional<Contact> tmpOpt = contactRepository.findById(contactId);
-        if (tmpOpt.isEmpty()) {
-            return false;
-        }
-        contactRepository.deleteById(contactId);
-        Contact tmpContact = tmpOpt.get();
-        tmpContact.setStatus(AppConstants.CLOSE);
-        tmpContact.setUpdatedBy(updatedBy);
-        tmpContact.setUpdatedAt(LocalDateTime.now());
-
-        Contact updatedContact = contactRepository.save(tmpContact);
+        Optional<Contact> tmpOptional = contactRepository.findById(contactId);
+        tmpOptional.ifPresent(contact -> {
+            contact.setStatus(AppConstants.CLOSE);
+            contact.setUpdatedBy(updatedBy);
+            contact.setUpdatedAt(LocalDateTime.now());
+        });
+        Contact updatedContact = contactRepository.save(tmpOptional.get());
         return updatedContact != null;
     }
 }

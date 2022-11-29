@@ -15,16 +15,14 @@ public class HolidayService {
     @Autowired
     HolidayRepository holidayRepository;
 
-    public List<Holiday> getHolidays(String holidayType) {
+    public List<Holiday> getAllHolidays() {
         Iterable<Holiday> all = holidayRepository.findAll();
         List<Holiday> holidays = new ArrayList<>();
         all.forEach(holidays::add);
-        if (holidayType.equals("ALL")) {
-            return holidays;
-        }
+        return holidays;
+    }
 
-        return holidays.stream()
-                .filter(holiday -> holiday.getType().toString().equals(holidayType))
-                .collect(Collectors.toList());
+    public List<Holiday> getHolidaysByType(Holiday.Type holidayType) {
+        return holidayRepository.findByType(holidayType);
     }
 }
