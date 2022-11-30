@@ -22,6 +22,7 @@ public class LoginController {
     public String login(
             @RequestParam(required = false) String error,
             @RequestParam(required = false) String logout,
+            @RequestParam(required = false) String register,
             Model model) {
         String message = "";
         if (error != null) {
@@ -30,6 +31,9 @@ public class LoginController {
 
         if (logout != null) {
             message = "Succesfully logged out!";
+        }
+        if (register != null) {
+            message = "Succesfully registered!";
         }
         model.addAttribute("errorMessage",message);
         return "login.html";

@@ -1,5 +1,6 @@
 package com.johnson.spring.model;
 
+import com.johnson.spring.annotation.FieldsValueMatch;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -11,6 +12,18 @@ import javax.validation.constraints.Size;
 
 @Data
 @Entity
+@FieldsValueMatch.FieldsList({
+        @FieldsValueMatch(
+                field = "pwd",
+                fieldMatch = "confirmPwd",
+                message = "Passwords no matchean!"
+        ),
+        @FieldsValueMatch(
+                field = "email",
+                fieldMatch = "confirmEmail",
+                message = "Emails no matchean!"
+        )
+})
 public class Person extends BaseEntity{
 
     @Id
@@ -23,7 +36,7 @@ public class Person extends BaseEntity{
     private String name;
 
     @NotBlank(message="Mobile number must not be blank")
-    @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
+    @Pattern(regexp="(^$|[0-9]{3})",message = "Mobile number must be 10 digits")
     private String mobileNumber;
 
     @NotBlank(message="Email must not be blank")
@@ -32,6 +45,7 @@ public class Person extends BaseEntity{
 
     @NotBlank(message="Confirm Email must not be blank")
     @Email(message = "Please provide a valid confirm email address" )
+    @Transient
     private String confirmEmail;
 
     @NotBlank(message="Password must not be blank")
@@ -40,6 +54,7 @@ public class Person extends BaseEntity{
 
     @NotBlank(message="Confirm Password must not be blank")
     @Size(min=5, message="Confirm Password must be at least 5 characters long")
+    @Transient
     private String confirmPwd;
 
 }
