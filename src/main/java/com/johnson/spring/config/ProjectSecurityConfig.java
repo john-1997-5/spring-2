@@ -29,6 +29,7 @@ public class ProjectSecurityConfig {
 
         http.csrf()
                 .ignoringAntMatchers("/saveMsg") // desactiva csrf para este endpoint
+                .ignoringAntMatchers("/public/**")
                 .and()
                 .authorizeHttpRequests(auth -> {
                     try {
@@ -42,6 +43,7 @@ public class ProjectSecurityConfig {
                                 .antMatchers("/saveMsg").permitAll()
                                 .antMatchers("/courses").authenticated() // necesita autenticarse
                                 .antMatchers("/about").permitAll()
+                                .antMatchers("/public/**").permitAll()
                                 .and().formLogin().loginPage("/login")
                                 .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
                                 .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
