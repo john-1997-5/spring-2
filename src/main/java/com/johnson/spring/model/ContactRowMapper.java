@@ -1,5 +1,6 @@
 package com.johnson.spring.model;
 
+import com.johnson.spring.model.entities.Contact;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

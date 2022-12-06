@@ -1,6 +1,6 @@
 package com.johnson.spring.repository;
 
-import com.johnson.spring.model.Contact;
+import com.johnson.spring.model.entities.Contact;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

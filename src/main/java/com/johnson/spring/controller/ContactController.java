@@ -1,6 +1,6 @@
 package com.johnson.spring.controller;
 
-import com.johnson.spring.model.Contact;
+import com.johnson.spring.model.entities.Contact;
 import com.johnson.spring.service.ContactService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

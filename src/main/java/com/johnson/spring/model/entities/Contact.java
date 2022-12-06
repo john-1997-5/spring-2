@@ -1,9 +1,7 @@
-package com.johnson.spring.model;
+package com.johnson.spring.model.entities;
 
+import com.johnson.spring.model.entities.BaseEntity;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Email;
 

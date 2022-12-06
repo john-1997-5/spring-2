@@ -1,4 +1,4 @@
-package com.johnson.spring.model;
+package com.johnson.spring.model.entities;
 
 import lombok.Data;
 

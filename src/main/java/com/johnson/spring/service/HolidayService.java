@@ -1,13 +1,12 @@
 package com.johnson.spring.service;
 
-import com.johnson.spring.model.Holiday;
+import com.johnson.spring.model.entities.Holiday;
 import com.johnson.spring.repository.HolidayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class HolidayService {
