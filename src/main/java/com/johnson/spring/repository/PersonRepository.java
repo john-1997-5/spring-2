@@ -1,10 +1,9 @@
 package com.johnson.spring.repository;
 
-import com.johnson.spring.model.entities.Role;
+import com.johnson.spring.model.entities.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Integer> {
-    Role getByRoleName(String role);
+public interface PersonRepository extends JpaRepository<Person, Integer> {
 }
