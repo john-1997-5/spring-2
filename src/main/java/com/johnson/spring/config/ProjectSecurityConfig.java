@@ -25,6 +25,8 @@ public class ProjectSecurityConfig {
                     try {
                         auth
                                 .antMatchers("/login").permitAll()
+                                .antMatchers("displayProfile").authenticated()
+                                .antMatchers("updateProfile").authenticated()
                                 .antMatchers("/displayMessages").hasRole("ADMIN")
                                 .antMatchers("/dashboard").authenticated()
                                 .antMatchers("/home").permitAll()

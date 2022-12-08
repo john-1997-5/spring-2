@@ -35,7 +35,7 @@ public class MyAuthProvider implements AuthenticationProvider {
         Person person = personRepository.readByEmail(email);
         if (person != null
                 && passwordEncoder.matches(pass, person.getPwd())) {
-            return new UsernamePasswordAuthenticationToken(person.getName(), pass, getGrantedAuthorities(person.getRole()));
+            return new UsernamePasswordAuthenticationToken(email, pass, getGrantedAuthorities(person.getRole()));
         }
         throw new BadCredentialsException("credenciales inválidas");
     }

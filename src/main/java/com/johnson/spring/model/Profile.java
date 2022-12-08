@@ -1,23 +1,28 @@
-package com.johnson.spring.model.entities;
+package com.johnson.spring.model;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Data
-@Entity
-public class Address extends BaseEntity{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
-    private int addressId;
+public class Profile {
+
+    @NotBlank(message="Name must not be blank")
+    @Size(min=3, message="Name must be at least 3 characters long")
+    private String name;
+
+    @NotBlank(message="Mobile number must not be blank")
+    @Pattern(regexp="(^$|[0-9]{3})",message = "número de 3 dígitos")
+    private String mobileNumber;
+
+    @NotBlank(message="Email must not be blank")
+    @Email(message = "Please provide a valid email address" )
+    private String email;
 
     @NotBlank(message="Address1 must not be blank")
     @Size(min=5, message="Address1 must be at least 5 characters long")
@@ -36,5 +41,4 @@ public class Address extends BaseEntity{
     @NotBlank(message="Zip Code must not be blank")
     @Pattern(regexp="(^$|[0-9]{5})",message = "Zip Code must be 5 digits")
     private String zipCode;
-
 }
